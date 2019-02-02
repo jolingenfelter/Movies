@@ -14,6 +14,7 @@
 		639DD4EA2205FDFC008D2FFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639DD4E82205FDFC008D2FFA /* LaunchScreen.storyboard */; };
 		639DD4F52205FDFC008D2FFA /* MoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DD4F42205FDFC008D2FFA /* MoviesTests.swift */; };
 		63E0DFC7220606CC004FEF3C /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFC6220606CC004FEF3C /* MovieDetailViewController.swift */; };
+		63E0DFC922060922004FEF3C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFC822060922004FEF3C /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		639DD4F42205FDFC008D2FFA /* MoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTests.swift; sourceTree = "<group>"; };
 		639DD4F62205FDFC008D2FFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63E0DFC6220606CC004FEF3C /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		63E0DFC822060922004FEF3C /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				639DD4DF2205FDFA008D2FFA /* AppDelegate.swift */,
+				63E0DFC822060922004FEF3C /* LoadingView.swift */,
 				639DD4E32205FDFA008D2FFA /* Main.storyboard */,
 				63E0DFC6220606CC004FEF3C /* MovieDetailViewController.swift */,
 				639DD4E12205FDFA008D2FFA /* MovieListViewController.swift */,
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				639DD4E22205FDFA008D2FFA /* MovieListViewController.swift in Sources */,
+				63E0DFC922060922004FEF3C /* LoadingView.swift in Sources */,
 				63E0DFC7220606CC004FEF3C /* MovieDetailViewController.swift in Sources */,
 				639DD4E02205FDFA008D2FFA /* AppDelegate.swift in Sources */,
 			);
