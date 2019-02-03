@@ -21,6 +21,7 @@
 		63E0DFD7220650DB004FEF3C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFD6220650DB004FEF3C /* APIClient.swift */; };
 		63E0DFD9220653C1004FEF3C /* MovieDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFD8220653C1004FEF3C /* MovieDatabaseClient.swift */; };
 		63E0DFDB220788CF004FEF3C /* MovieDatabaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFDA220788CF004FEF3C /* MovieDatabaseResponse.swift */; };
+		63E0DFE92207AC8C004FEF3C /* ImageGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFE82207AC8C004FEF3C /* ImageGetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		63E0DFD6220650DB004FEF3C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		63E0DFD8220653C1004FEF3C /* MovieDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDatabaseClient.swift; sourceTree = "<group>"; };
 		63E0DFDA220788CF004FEF3C /* MovieDatabaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDatabaseResponse.swift; sourceTree = "<group>"; };
+		63E0DFE82207AC8C004FEF3C /* ImageGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGetter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				639DD4DF2205FDFA008D2FFA /* AppDelegate.swift */,
+				63E0DFEA2207AC98004FEF3C /* Helpers */,
 				63E0DFCE22064A6F004FEF3C /* Models */,
 				63E0DFD122064E95004FEF3C /* Networking */,
 				63E0DFCF22064A7F004FEF3C /* ViewControllers */,
@@ -150,6 +153,14 @@
 				63E0DFD222064EE8004FEF3C /* MovieDatabaseEndpoint.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		63E0DFEA2207AC98004FEF3C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				63E0DFE82207AC8C004FEF3C /* ImageGetter.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E0DFE92207AC8C004FEF3C /* ImageGetter.swift in Sources */,
 				639DD4E22205FDFA008D2FFA /* MovieListViewController.swift in Sources */,
 				63E0DFC922060922004FEF3C /* LoadingView.swift in Sources */,
 				63E0DFC7220606CC004FEF3C /* MovieDetailViewController.swift in Sources */,
