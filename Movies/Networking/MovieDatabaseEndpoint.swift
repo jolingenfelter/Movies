@@ -11,7 +11,7 @@ import Foundation
 enum MovieDatabaseEndpoint {
     case popularMovies
     
-    var baseURL: URL {
+    private var baseURL: URL {
         return URL(string: "https://api.themoviedb.org/3")!
     }
     
@@ -26,5 +26,4 @@ enum MovieDatabaseEndpoint {
             return URL(string: "\(baseURL)/discover/movie?api_key=\(apiKey)&sort_by=popularity.desc")
         }
     }
-    
 }

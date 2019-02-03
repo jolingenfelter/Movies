@@ -13,12 +13,12 @@ public let missingHTTPResponseError: Int = 10
 public let unhandledResponse = 30
 public let abnormalError: Int = 40
 
-enum APIResult<T> {
+enum Result<T> {
     case success(T)
     case failure(Error)
 }
 
-typealias APIResultHandler = (APIResult<Data>) -> Void
+typealias APIResultHandler = (Result<Data>) -> Void
 
 protocol APIClient {
     var session: URLSession { get }

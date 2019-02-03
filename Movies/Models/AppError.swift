@@ -10,4 +10,5 @@ import Foundation
 
 enum AppError: String, Error {
     case invalidURL = "The url is not valid"
+    case invalidJsonResponse = "Invalid JSON response"
 }

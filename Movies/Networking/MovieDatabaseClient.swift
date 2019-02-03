@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias MovieResultHandler = (APIResult<[Movie]>) -> Void
+typealias MovieResultHandler = (Result<[Movie]>) -> Void
 
 final class MovieDatabaseClient: APIClient {
     let configuration: URLSessionConfiguration
@@ -26,33 +26,35 @@ final class MovieDatabaseClient: APIClient {
     }
     
     func fetchPopularMovies(movieResult: @escaping MovieResultHandler) {
-        fetchFromMovieDatabase(endpoint: .popularMovies) { apiResult in
-            do {
-                switch apiResult {
-                case .success(let data):
-                    let movies = try JSONDecoder().decode([Movie].self, from: data)
-                    movieResult(.success(movies))
-                case .failure(let error):
-                    movieResult(.failure(error))
-                }
-            } catch {
-                movieResult(.failure(error))
-            }
+        fetchFromMovieDatabase(endpoint: .popularMovies, successHandler: { (movies: [Movie]) in
+            movieResult(.success(movies))
+        }) { error in
+            movieResult(.failure(error))
         }
     }
 }
 
 private extension MovieDatabaseClient {
-    func fetchFromMovieDatabase(endpoint: MovieDatabaseEndpoint, result: @escaping APIResultHandler) {
+    func fetchFromMovieDatabase<T: Codable>(endpoint: MovieDatabaseEndpoint, successHandler: (([T]) -> Void)?, failureHandler: ((Error) -> Void)?){
         guard let url = endpoint.createURL() else {
-            result(.failure(AppError.invalidURL))
+            failureHandler?(AppError.invalidURL)
             return
         }
         
-        print(url)
-        
         let request = URLRequest(url: url)
         
-        fetchData(withRequest: request, result: result)
+        fetchData(withRequest: request) { fetchedResult in
+            switch fetchedResult {
+            case .success(let data):
+                do {
+                    let object = try JSONDecoder().decode(MovieDatabaseResponse<T>.self, from: data)
+                    successHandler?(object.results)
+                } catch {
+                    failureHandler?(error)
+                }
+            case .failure(let error):
+               failureHandler?(error)
+            }
+        }
     }
 }
