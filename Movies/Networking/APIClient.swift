@@ -13,15 +13,19 @@ public let missingHTTPResponseError: Int = 10
 public let unhandledResponse = 30
 public let abnormalError: Int = 40
 
-typealias SuccessHandler = (Data) -> ()
-typealias FailureHandler = (Error) -> ()
+enum APIResult<T> {
+    case success(T)
+    case failure(Error)
+}
+
+typealias APIResultHandler = (APIResult<Data>) -> Void
 
 protocol APIClient {
     var session: URLSession { get }
 }
 
 extension APIClient {
-    func fetchData(withRequest request: URLRequest, successHandler: SuccessHandler?, failureHandler: FailureHandler?) {
+    func fetchData(withRequest request: URLRequest, result: @escaping APIResultHandler) {
         DispatchQueue.global(qos: .default).async {
             DispatchQueue.global(qos: .utility).async {
                 let task = self.session.dataTask(with: request) { (data, response, error) in
@@ -29,7 +33,7 @@ extension APIClient {
                         let userInfo = [NSLocalizedDescriptionKey: NSLocalizedString("MissingHTTPResponse", comment: "")]
                         let error = NSError(domain: JLNetworkingErrorDomain, code: missingHTTPResponseError, userInfo: userInfo)
                         DispatchQueue.main.async {
-                            failureHandler?(error)
+                            result(.failure(error))
                         }
                         return
                     }
@@ -37,19 +41,19 @@ extension APIClient {
                         if let data = data {
                             switch HTTPURLResponse.statusCode {
                             case 200:
-                                successHandler?(data)
+                                result(.success(data))
                             default:
                                 let userInfo = [NSLocalizedDescriptionKey: NSLocalizedString("Received HTTPURLREsponse: \(HTTPURLResponse.statusCode)", comment: "")]
                                 let error = NSError(domain: JLNetworkingErrorDomain, code: unhandledResponse, userInfo: userInfo)
-                                failureHandler?(error)
+                                result(.failure(error))
                             }
                         } else {
                             if let error = error {
-                                failureHandler?(error)
+                                result(.failure(error))
                             } else {
                                 let userInfo = [NSLocalizedDescriptionKey: "An abnormal error occured"]
                                 let error = NSError(domain: JLNetworkingErrorDomain, code: abnormalError, userInfo: userInfo)
-                                failureHandler?(error)
+                                result(.failure(error))
                             }
                         }
                     }

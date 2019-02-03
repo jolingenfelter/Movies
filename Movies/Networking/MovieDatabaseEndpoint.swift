@@ -20,14 +20,10 @@ enum MovieDatabaseEndpoint {
         
     }
     
-    func createURL(withQuery query: Int?) throws -> URL {
+    func createURL() -> URL? {
         switch self {
         case .popularMovies:
-            guard let url =  URL(string: "\(baseURL)discover/movie?sort_by=popularity.descapi_key=\(apiKey)") else {
-                throw AppError.invalidURL
-            }
-            
-            return url
+            return URL(string: "\(baseURL)/discover/movie?api_key=\(apiKey)&sort_by=popularity.desc")
         }
     }
     

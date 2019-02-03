@@ -12,6 +12,16 @@ class MovieListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let movieDatabaseClient = MovieDatabaseClient()
+        movieDatabaseClient.fetchPopularMovies { result in
+            switch result {
+            case .success(let movies):
+                print(movies)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
