@@ -42,19 +42,6 @@ private extension MovieListViewController {
             }
         }
     }
-    
-    func getMoviePoster(_ movie: Movie, completion: @escaping ((UIImage?) -> Void)) {
-        if let imageURLString = movie.imageURL, let imageURL =  URL(string: imageURLString) {
-            ImageGetter.sharedInstance.getImage(from: imageURL) { result in
-                switch result {
-                case .success(let image):
-                    completion(image)
-                case .failure:
-                    completion(nil)
-                }
-            }
-        }
-    }
 }
 
 // MARK: - UITableViewDataSource
@@ -70,7 +57,7 @@ extension MovieListViewController: UITableViewDataSource {
         
         let movie = movies[indexPath.row]
         
-        getMoviePoster(movie) { image in
+        movie.getMoviePoster() { image in
             cell.loadMoviePoster(image)
         }
         
@@ -89,6 +76,12 @@ extension MovieListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let storyboard = UIStoryboard(name: StoryboardConstants.main, bundle: nil)
+        let movieDetailViewController = storyboard.instantiateViewController(withIdentifier: StoryboardConstants.movieDetailViewController) as! MovieDetailViewController
+        movieDetailViewController.movie = movies[indexPath.row]
+        
+        navigationController?.pushViewController(movieDetailViewController, animated: true)
     }
 }
 

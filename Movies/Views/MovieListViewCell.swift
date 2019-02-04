@@ -9,6 +9,8 @@
 import UIKit
 
 class MovieListViewCell: UITableViewCell {
+    static var identifier = "MovieListViewCell"
+    
     private enum Constants {
         static let posterViewWidth: CGFloat = 70.0
         static let titleFontSize: CGFloat = 16.0
@@ -16,8 +18,6 @@ class MovieListViewCell: UITableViewCell {
         static let labelHeight: CGFloat = 22.0
         static let margin: CGFloat = 20.0
     }
-    
-    static var identifier = "MovieListViewCell"
     
     private lazy var posterView: UIImageView = {
         let imageView = UIImageView()

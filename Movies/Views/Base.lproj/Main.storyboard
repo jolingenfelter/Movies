@@ -31,9 +31,6 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <segue destination="bXW-ZL-BCE" kind="show" id="zd1-R8-MSe"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -63,17 +60,45 @@
         <!--Movie Detail View Controller-->
         <scene sceneID="zFr-cK-MzJ">
             <objects>
-                <viewController id="bXW-ZL-BCE" customClass="MovieDetailViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailViewController" id="bXW-ZL-BCE" customClass="MovieDetailViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kHr-Hh-SzS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hUh-F3-lWC">
+                                <rect key="frame" x="67.5" y="80" width="240" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="NvT-Tr-chg"/>
+                                    <constraint firstAttribute="width" constant="240" id="uhr-la-W2n"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RQQ-oe-QXp">
+                                <rect key="frame" x="20" y="505" width="335" height="142"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RQQ-oe-QXp" firstAttribute="top" secondItem="hUh-F3-lWC" secondAttribute="bottom" constant="25" id="JI1-Aj-KsA"/>
+                            <constraint firstItem="hUh-F3-lWC" firstAttribute="top" secondItem="Noc-Jo-Grz" secondAttribute="top" constant="60" id="QSh-xk-Hwr"/>
+                            <constraint firstItem="hUh-F3-lWC" firstAttribute="centerX" secondItem="kHr-Hh-SzS" secondAttribute="centerX" id="cn3-RY-3rz"/>
+                            <constraint firstItem="RQQ-oe-QXp" firstAttribute="leading" secondItem="Noc-Jo-Grz" secondAttribute="leading" constant="20" id="nrT-fP-b7f"/>
+                            <constraint firstItem="Noc-Jo-Grz" firstAttribute="bottom" secondItem="RQQ-oe-QXp" secondAttribute="bottom" constant="20" id="oEG-oO-Rjy"/>
+                            <constraint firstItem="Noc-Jo-Grz" firstAttribute="trailing" secondItem="RQQ-oe-QXp" secondAttribute="trailing" constant="20" id="pNj-uw-SVF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Noc-Jo-Grz"/>
                     </view>
+                    <connections>
+                        <outlet property="overviewTextView" destination="RQQ-oe-QXp" id="vOQ-th-te5"/>
+                        <outlet property="posterView" destination="hUh-F3-lWC" id="oxW-M7-zbd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4wy-Cq-Qir" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1852" y="133"/>
+            <point key="canvasLocation" x="1759" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Emu-dz-fCg">
