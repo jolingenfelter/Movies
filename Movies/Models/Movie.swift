@@ -16,6 +16,7 @@ struct Movie: Codable {
         case id
         case posterPath = "poster_path"
     }
+    
     let title: String?
     let releaseDate: String?
     let overview: String?
