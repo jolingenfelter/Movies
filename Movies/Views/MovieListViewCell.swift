@@ -12,6 +12,9 @@ class MovieListViewCell: UITableViewCell {
     private enum Constants {
         static let posterViewWidth: CGFloat = 70.0
         static let titleFontSize: CGFloat = 16.0
+        static let subtitleFontSize: CGFloat = 14.0
+        static let labelHeight: CGFloat = 22.0
+        static let margin: CGFloat = 20.0
     }
     
     static var identifier = "MovieListViewCell"
@@ -29,6 +32,16 @@ class MovieListViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: Constants.titleFontSize)
+        label.numberOfLines = 2
+        
+        return label
+    }()
+    
+    private lazy var releaseDateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: Constants.subtitleFontSize)
         label.numberOfLines = 1
         
         return label
@@ -51,10 +64,22 @@ class MovieListViewCell: UITableViewCell {
             self.posterView.image = image
         }
     }
+    
+    func setMovieTitle(_ title: String?) {
+        movieTitleLabel.text = title
+        movieTitleLabel.invalidateIntrinsicContentSize()
+    }
+    
+    func setReleaseDate(_ releaseDate: String?) {
+        releaseDateLabel.text = releaseDate
+        invalidateIntrinsicContentSize()
+    }
 }
 
 private extension MovieListViewCell {
     func commonInit() {
+        selectionStyle = .none
+        
         contentView.addSubview(posterView)
         
         NSLayoutConstraint.activate([
@@ -63,6 +88,21 @@ private extension MovieListViewCell {
             posterView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             posterView.widthAnchor.constraint(equalToConstant: Constants.posterViewWidth)])
         
-        let stackView = UIStackView(arrangedSubviews: [movieTitleLabel])
+        NSLayoutConstraint.activate([
+            movieTitleLabel.heightAnchor.constraint(equalToConstant: Constants.labelHeight),
+            releaseDateLabel.heightAnchor.constraint(equalToConstant: Constants.labelHeight)])
+        
+        let stackView = UIStackView(arrangedSubviews: [movieTitleLabel, releaseDateLabel])
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .leading
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: posterView.trailingAnchor, constant: Constants.margin),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.margin),
+            stackView.topAnchor.constraint(equalTo: posterView.topAnchor, constant: Constants.margin)])
     }
 }

@@ -74,6 +74,9 @@ extension MovieListViewController: UITableViewDataSource {
             cell.loadMoviePoster(image)
         }
         
+        cell.setMovieTitle(movie.title)
+        cell.setReleaseDate(movie.releaseDate)
+        
         return cell
     }
 }
@@ -85,7 +88,7 @@ extension MovieListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
