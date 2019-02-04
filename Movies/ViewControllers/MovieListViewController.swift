@@ -13,6 +13,7 @@ class MovieListViewController: UIViewController {
         static let rowHeight: CGFloat = 128.0
     }
     
+    private let movieDatabaseClient = MovieDatabaseClient()
     private var movies: [Movie] = []
 
     @IBOutlet weak var tableView: UITableView!
@@ -31,15 +32,20 @@ private extension MovieListViewController {
     }
     
     func fetchMovies() {
-        let movieDatabaseClient = MovieDatabaseClient()
-        movieDatabaseClient.fetchPopularMovies { result in
+        LoadingView.show(in: self.view)
+        
+        movieDatabaseClient.fetchPopularMovies { [weak self] result in
+            guard let sself = self else { return }
+            
             switch result {
             case .success(let movies):
-                self.movies = movies
-                self.tableView.reloadData()
+                sself.movies = movies
+                sself.tableView.reloadData()
             case .failure(let error):
-                print(error)
+                sself.display(alert: error)
             }
+            
+            LoadingView.hide(for: sself.view)
         }
     }
 }

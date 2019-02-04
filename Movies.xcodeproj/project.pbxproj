@@ -25,6 +25,7 @@
 		63E0DFEC2207AF01004FEF3C /* MovieListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFEB2207AF01004FEF3C /* MovieListViewCell.swift */; };
 		63E0DFF12207C514004FEF3C /* StoryboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFF02207C514004FEF3C /* StoryboardConstants.swift */; };
 		63E0DFF32207C7FF004FEF3C /* Movie+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFF22207C7FF004FEF3C /* Movie+Image.swift */; };
+		63E2A21C2207DF62001B1477 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E2A21B2207DF62001B1477 /* UIViewController+Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		63E0DFEB2207AF01004FEF3C /* MovieListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewCell.swift; sourceTree = "<group>"; };
 		63E0DFF02207C514004FEF3C /* StoryboardConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardConstants.swift; sourceTree = "<group>"; };
 		63E0DFF22207C7FF004FEF3C /* Movie+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+Image.swift"; sourceTree = "<group>"; };
+		63E2A21B2207DF62001B1477 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				63E0DFF22207C7FF004FEF3C /* Movie+Image.swift */,
+				63E2A21B2207DF62001B1477 /* UIViewController+Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E2A21C2207DF62001B1477 /* UIViewController+Alert.swift in Sources */,
 				63E0DFE92207AC8C004FEF3C /* ImageGetter.swift in Sources */,
 				639DD4E22205FDFA008D2FFA /* MovieListViewController.swift in Sources */,
 				63E0DFC922060922004FEF3C /* LoadingView.swift in Sources */,
