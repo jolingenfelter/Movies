@@ -20,5 +20,23 @@ struct Movie: Codable {
     let releaseDate: String?
     let overview: String?
     let id: Int?
-    let posterPath: String?
+    let imageURL: String?
+    
+    private let posterPath: String?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        title = try container.decodeIfPresent(String.self, forKey: .title)
+        releaseDate = try container.decodeIfPresent(String.self, forKey: .releaseDate)
+        overview = try container.decodeIfPresent(String.self, forKey: .overview)
+        id = try container.decodeIfPresent(Int.self, forKey: .id)
+        posterPath = try container.decodeIfPresent(String.self, forKey: .posterPath)
+        
+        if let posterPath = posterPath {
+            imageURL = "https://image.tmdb.org/t/p/w500\(posterPath)"
+        } else {
+            imageURL = nil
+        }
+    }
 }

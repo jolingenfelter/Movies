@@ -22,6 +22,7 @@
 		63E0DFD9220653C1004FEF3C /* MovieDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFD8220653C1004FEF3C /* MovieDatabaseClient.swift */; };
 		63E0DFDB220788CF004FEF3C /* MovieDatabaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFDA220788CF004FEF3C /* MovieDatabaseResponse.swift */; };
 		63E0DFE92207AC8C004FEF3C /* ImageGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFE82207AC8C004FEF3C /* ImageGetter.swift */; };
+		63E0DFEC2207AF01004FEF3C /* MovieListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0DFEB2207AF01004FEF3C /* MovieListViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		63E0DFD8220653C1004FEF3C /* MovieDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDatabaseClient.swift; sourceTree = "<group>"; };
 		63E0DFDA220788CF004FEF3C /* MovieDatabaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDatabaseResponse.swift; sourceTree = "<group>"; };
 		63E0DFE82207AC8C004FEF3C /* ImageGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGetter.swift; sourceTree = "<group>"; };
+		63E0DFEB2207AF01004FEF3C /* MovieListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		63E0DFD022064A94004FEF3C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				63E0DFEB2207AF01004FEF3C /* MovieListViewCell.swift */,
 				63E0DFC822060922004FEF3C /* LoadingView.swift */,
 				639DD4E32205FDFA008D2FFA /* Main.storyboard */,
 			);
@@ -269,6 +272,7 @@
 				63E0DFC922060922004FEF3C /* LoadingView.swift in Sources */,
 				63E0DFC7220606CC004FEF3C /* MovieDetailViewController.swift in Sources */,
 				63E0DFD7220650DB004FEF3C /* APIClient.swift in Sources */,
+				63E0DFEC2207AF01004FEF3C /* MovieListViewCell.swift in Sources */,
 				63E0DFDB220788CF004FEF3C /* MovieDatabaseResponse.swift in Sources */,
 				63E0DFD9220653C1004FEF3C /* MovieDatabaseClient.swift in Sources */,
 				639DD4E02205FDFA008D2FFA /* AppDelegate.swift in Sources */,

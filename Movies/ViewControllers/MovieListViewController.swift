@@ -9,19 +9,83 @@
 import UIKit
 
 class MovieListViewController: UIViewController {
+    private enum Constants {
+        static let rowHeight: CGFloat = 128.0
+    }
+    
+    private var movies: [Movie] = []
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupView()
+        fetchMovies()
+    }
+}
+
+private extension MovieListViewController {
+    func setupView() {
+        self.title = "Popular Movies"
+    }
+    
+    func fetchMovies() {
         let movieDatabaseClient = MovieDatabaseClient()
         movieDatabaseClient.fetchPopularMovies { result in
             switch result {
             case .success(let movies):
-                print(movies)
+                self.movies = movies
+                self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    
+    func getMoviePoster(_ movie: Movie, completion: @escaping ((UIImage?) -> Void)) {
+        if let imageURLString = movie.imageURL, let imageURL =  URL(string: imageURLString) {
+            ImageGetter.sharedInstance.getImage(from: imageURL) { result in
+                switch result {
+                case .success(let image):
+                    completion(image)
+                case .failure:
+                    completion(nil)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension MovieListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieListViewCell.identifier) as? MovieListViewCell else {
+            fatalError("Could not dequeue cell: \(MovieListViewCell.self)")
+        }
+        
+        let movie = movies[indexPath.row]
+        
+        getMoviePoster(movie) { image in
+            cell.loadMoviePoster(image)
+        }
+        
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension MovieListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }
 
